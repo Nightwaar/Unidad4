@@ -24,8 +24,8 @@ class calculariva():
         ttk.Label(self.__ventana,text='Precio sin IVA').place(x=80,y=90)
         self.__preciobase=DoubleVar()
         self.__precioiva=DoubleVar()
-        self.preciobaseEntry=ttk.Entry(self.__ventana,textvariable=self.__preciobase).place(x=180,y=90)
-        
+        ttk.Entry(self.__ventana,textvariable=self.__preciobase).place(x=180,y=90)
+
         
         seleccionar=ttk.LabelFrame(self.__ventana,text="Seleccione el IVA del producto").place(x=110,y=140)
         ttk.Radiobutton(seleccionar,text="IVA 21%",value=0,variable=self.iva,command=self.calcular()).place(x=130,y=180)
