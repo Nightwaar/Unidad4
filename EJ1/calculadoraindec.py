@@ -12,22 +12,26 @@ class calculador():
     __educacionactual = None
     __educacionbase = None
     __educaciocantidad = None
+    
+    __total=None
 
     def __init__(self):
         self.__ventana = Tk()
-        self.__ventana.geometry('500x400')
+        self.__ventana.geometry('800x400')
         self.__ventana.configure(background='white')
         self.__ventana.title('Calculadora de indec')
 
-        self.__vestimentacantidad = StringVar()
-        self.__vestimentabase = StringVar()
-        self.__vestimentaactual = StringVar()
-        self.__alimentoscantidad = StringVar()
-        self.__alimentosbase = StringVar()
-        self.__alimentosactual = StringVar()
-        self.__educacionactual = StringVar()
-        self.__educacionbase = StringVar()
-        self.__educaciocantidad = StringVar()
+        self.__vestimentacantidad = DoubleVar()
+        self.__vestimentabase = DoubleVar()
+        self.__vestimentaactual = DoubleVar()
+        self.__alimentoscantidad = DoubleVar()
+        self.__alimentosbase = DoubleVar()
+        self.__alimentosactual = DoubleVar()
+        self.__educacionactual = DoubleVar()
+        self.__educacionbase = DoubleVar()
+        self.__educaciocantidad = DoubleVar()
+        self.__total=DoubleVar()
+        
 
         ttk.Button(self.__ventana, text='Salir', command=self.__ventana.destroy).place(x=345, y=266)
         ttk.Button(self.__ventana,text='Calcular',command=self.calcular).place(x=250,y=266)
@@ -48,11 +52,19 @@ class calculador():
         self.educaciocantidadEntry=ttk.Entry(textvariable=self.__educaciocantidad).place(x=150,y=210,width=80)
         self.educacionbaseEntry=ttk.Entry(textvariable=self.__alimentosbase).place(x=260,y=210,width=80)
         self.educacionactualEntry=ttk.Entry(textvariable=self.__educacionactual).place(x=380,y=210,width=80)
-
+        
         ttk.Label(self.__ventana,text='El IPC es %').place(x=55,y=310)
+
         self.__ventana.mainloop()
     def calcular(self):
-        ttk.Label(self.__ventana,text='HOLA').place(x=120,y=310)
+        try:
+            vestimenta=float((self.vestimentacantidadEntry.get()*self.vestimentabaseEntry.get())/self.vestimentaactualEntry.get())
+            alimentos=float((self.alimentoscantidadEntry.get()*self.alimentosbaseEntry.get())/self.alimentosactualEntry.get())
+            educacion=float((self.educaciocantidadEntry.get()*self.educacionbaseEntry.get())/self.educacionactualEntry.get())
+            total=float((vestimenta+alimentos+educacion)*100)
+            totalmostrar=str(total.split(','))
+        except ValueError:
+            ttk.Label(self.__ventana,text='Error').place(x=120,y=310)
 
 def testAPP():
     miapp = calculador()
