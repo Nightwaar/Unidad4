@@ -38,12 +38,12 @@ class calculariva():
     def calcular(self):
         valor=float(self.__preciobase.get())
         if self.iva.get()==0:
-            iva=valor*21/100
-            self.__precioiva.set(valor+iva)
+            iva21=valor*21/100
+            self.__precioiva.set(valor+iva21)
         else:
             if self.iva.get()==1:
-                iva=valor*10.5/100
-                self.__precioiva.set(valor+iva)
+                iva10=valor*10.5/100
+                self.__precioiva.set(valor+iva10)
 def testapp():
     miapp=calculariva()
 if __name__=='__main__':
