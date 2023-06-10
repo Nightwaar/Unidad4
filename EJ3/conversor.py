@@ -9,6 +9,7 @@ class conversor:
     def __init__(self):
         self.__ventana=Tk()
         self.__ventana.geometry('300x200')
+        self.__ventana.configure(borderwidth=4,relief='raised')
         
         self.__dolares=DoubleVar()
         self.__peso=DoubleVar()
