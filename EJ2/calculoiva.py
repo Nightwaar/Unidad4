@@ -11,7 +11,7 @@ class calculariva():
         self.__ventana.configure(bg='white')
         self.__ventana.title('Calculador de iva')
         self.iva=DoubleVar()
-        opts = { 'ipadx': 500, 'ipady': 10}
+        
         ttk.Label(self.__ventana,text='Calculo de IVA',background='gray').place(width=500,height=50)
         
         style = ttk.Style()
