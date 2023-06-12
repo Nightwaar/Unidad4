@@ -21,16 +21,16 @@ class calculador():
         self.__ventana.configure(background='white')
         self.__ventana.title('Calculadora de indec')
 
-        self.__vestimentacantidad = DoubleVar()
-        self.__vestimentabase = DoubleVar()
-        self.__vestimentaactual = DoubleVar()
-        self.__alimentoscantidad = DoubleVar()
-        self.__alimentosbase = DoubleVar()
-        self.__alimentosactual = DoubleVar()
-        self.__educacionactual = DoubleVar()
-        self.__educacionbase = DoubleVar()
-        self.__educaciocantidad = DoubleVar()
-        self.__total=DoubleVar()
+        self.__vestimentacantidad = StringVar()
+        self.__vestimentabase = StringVar()
+        self.__vestimentaactual = StringVar()
+        self.__alimentoscantidad = StringVar()
+        self.__alimentosbase = StringVar()
+        self.__alimentosactual = StringVar()
+        self.__educacionactual = StringVar()
+        self.__educacionbase = StringVar()
+        self.__educaciocantidad = StringVar()
+        self.__total=StringVar()
         
 
         ttk.Button(self.__ventana, text='Salir', command=self.__ventana.destroy).place(x=345, y=266)
@@ -43,26 +43,40 @@ class calculador():
         ttk.Label(self.__ventana, text='Alimentos').place(x=58, y=170)
         ttk.Label(self.__ventana, text='Educacion').place(x=58, y=210)
     
-        self.vestimentacantidadEntry=ttk.Entry(textvariable=self.__vestimentacantidad).place(x=150,y=130,width=80)
-        self.vestimentabaseEntry=ttk.Entry(textvariable=self.__vestimentabase).place(x=260,y=130,width=80)
-        self.vestimentaactualEntry=ttk.Entry(textvariable=self.__vestimentaactual).place(x=380,y=130,width=80)
-        self.alimentosactualEntry=ttk.Entry(textvariable=self.__alimentosactual).place(x=150,y=170,width=80)
-        self.alimentosbaseEntry=ttk.Entry(textvariable=self.__alimentosbase).place(x=260,y=170,width=80)
-        self.alimentoscantidadEntry=ttk.Entry(textvariable=self.__alimentoscantidad).place(x=380,y=170,width=80)
-        self.educaciocantidadEntry=ttk.Entry(textvariable=self.__educaciocantidad).place(x=150,y=210,width=80)
-        self.educacionbaseEntry=ttk.Entry(textvariable=self.__alimentosbase).place(x=260,y=210,width=80)
-        self.educacionactualEntry=ttk.Entry(textvariable=self.__educacionactual).place(x=380,y=210,width=80)
+        ttk.Entry(textvariable=self.__vestimentacantidad).place(x=150,y=130,width=80)
+        ttk.Entry(textvariable=self.__vestimentabase).place(x=260,y=130,width=80)
+        ttk.Entry(textvariable=self.__vestimentaactual).place(x=380,y=130,width=80)
+        ttk.Entry(textvariable=self.__alimentosactual).place(x=150,y=170,width=80)
+        ttk.Entry(textvariable=self.__alimentosbase).place(x=260,y=170,width=80)
+        ttk.Entry(textvariable=self.__alimentoscantidad).place(x=380,y=170,width=80)
+        ttk.Entry(textvariable=self.__educaciocantidad).place(x=150,y=210,width=80)
+        ttk.Entry(textvariable=self.__educacionbase).place(x=260,y=210,width=80)
+        ttk.Entry(textvariable=self.__educacionactual).place(x=380,y=210,width=80)
         
         ttk.Label(self.__ventana,text='El IPC es %').place(x=55,y=310)
+        ttk.Label(self.__ventana,textvariable=self.__total).place(x=120,y=310)
 
         self.__ventana.mainloop()
     def calcular(self):
         try:
-            vestimenta=float((self.vestimentacantidadEntry.get()*self.vestimentabaseEntry.get())/self.vestimentaactualEntry.get())
-            alimentos=float((self.alimentoscantidadEntry.get()*self.alimentosbaseEntry.get())/self.alimentosactualEntry.get())
-            educacion=float((self.educaciocantidadEntry.get()*self.educacionbaseEntry.get())/self.educacionactualEntry.get())
-            total=float((vestimenta+alimentos+educacion)*100)
-            totalmostrar=str(total.split(','))
+            vestimentacan = float(self.__vestimentacantidad.get())
+            vestimentaba = float(self.__vestimentabase.get())
+            vestimentaac = float(self.__vestimentaactual.get())
+            alimentoscan = float(self.__alimentoscantidad.get())
+            alimentosba = float(self.__alimentosbase.get())
+            alimentosac = float(self.__alimentosactual.get())
+            educacionact = float(self.__educacionactual.get())
+            educacionba = float(self.__educacionbase.get())
+            educaciocan = float(self.__educaciocantidad.get())
+            
+            
+            vestimenta=float((vestimentacan*vestimentaba)/vestimentaac)
+            alimentos=float((alimentoscan*alimentosba)/alimentosac)
+            educacion=float((educaciocan*educacionba)/educacionact)
+            
+            
+            totalipb=float((vestimenta+alimentos+educacion)%100)
+            self.__total.set(totalipb)
         except ValueError:
             ttk.Label(self.__ventana,text='Error').place(x=120,y=310)
 
