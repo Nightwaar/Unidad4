@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
+
 class calculariva():
     __ventana=None
     __preciobase=None
@@ -28,6 +29,7 @@ class calculariva():
 
         
         seleccionar=ttk.LabelFrame(self.__ventana,text="Seleccione el IVA del producto").place(x=110,y=140)
+        ttk.Label(self.__ventana,text='Seleccione tipo el iva del producto')
         ttk.Radiobutton(seleccionar,text="IVA 21%",value=0,variable=self.iva).place(x=130,y=180)
         ttk.Radiobutton(seleccionar,text="IVA 10.5%",value=1,variable=self.iva).place(x=130,y=220)
         
