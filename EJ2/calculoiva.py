@@ -28,8 +28,8 @@ class calculariva():
 
         
         seleccionar=ttk.LabelFrame(self.__ventana,text="Seleccione el IVA del producto").place(x=110,y=140)
-        ttk.Radiobutton(seleccionar,text="IVA 21%",value=0,variable=self.iva,command=self.calcular()).place(x=130,y=180)
-        ttk.Radiobutton(seleccionar,text="IVA 10.5%",value=1,variable=self.iva,command=self.calcular()).place(x=130,y=220)
+        ttk.Radiobutton(seleccionar,text="IVA 21%",value=0,variable=self.iva).place(x=130,y=180)
+        ttk.Radiobutton(seleccionar,text="IVA 10.5%",value=1,variable=self.iva).place(x=130,y=220)
         
         ttk.Label(self.__ventana,text="Precio con IVA: ").place(x=100,y=260)
         ttk.Label(self.__ventana,textvariable=self.__precioiva).place(x=200,y=260)
