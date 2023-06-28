@@ -9,6 +9,7 @@ class VentanaPelicula(object):
 		self.__ventanita=Toplevel()
 		self.__ventanita.title(pelicula.nombre())
 		self.__ventanita.geometry("300x300")
+		self.__ventanita.configure(bg='white')
 		self.__titulo=ttk.Label(self.__ventanita,text=f"Titulo: {pelicula.nombre()}")
 		self.__titulo.grid(column=0,row=0)
 		self.__descripcion_frame=ttk.LabelFrame(self.__ventanita,text="Descripcion")
@@ -18,7 +19,7 @@ class VentanaPelicula(object):
 		self.__generos.grid(column=0,row=2)
 		for genero in pelicula.generos():
 			ttk.Label(self.__generos,text=f"-{generos.genero(genero)}").pack(side="left")
-		ttk.Label(self.__ventanita,text=f"Lanzamiento: {pelicula.fecha()}").grid(column=0,row=3)
+		ttk.Label(self.__ventanita,text=f"Fecha de lanzamiento: {pelicula.fecha()}").grid(column=0,row=3)
 		ttk.Label(self.__ventanita,text=f"Idioma: '{pelicula.idioma()}'").grid(column=0,row=4)
 		self.__ventanita.transient(master=ventanaPadre)
 		self.__ventanita.grab_set()

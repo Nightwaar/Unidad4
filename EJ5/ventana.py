@@ -7,8 +7,9 @@ class Ventana(object):
 	def __init__(self,peliculas,generos):
 		self.__ventana = tk.Tk()
 		opts = { 'ipadx': 10, 'ipady': 10, 'fill': tk.BOTH}
-		self.__ventana.title("Visor de peliculones")
-		self.__ventana.geometry("300x300")
+		self.__ventana.title("Visor de peliculas")
+		self.__ventana.geometry("400x400")
+		self.__ventana.configure(bg='White')
 		self.__mainframe=ttk.Frame(self.__ventana,padding="3 3 12 12")
 		self.__mainframe.pack(side="top")
 		self.__lista=tk.Listbox(self.__mainframe)
